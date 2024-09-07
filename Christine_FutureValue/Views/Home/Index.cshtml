@@ -1,8 +1,16 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    Layout = null;
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name = "viewport" content="width=device-width"/>
+        <title>Home Page</title>
+    </head>
+    <body>
+        <h1>Future Values Calculator</h1>
+        <p>Customer Name: @ViewBag.Name</p>
+        <p>Future Value @ViewBag.FV.ToString("C2")</p>
+        <h2>User's Age: @ViewBag.Age.ToString()</h2>
+    </body>
+</html>
