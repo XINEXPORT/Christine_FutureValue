@@ -1,18 +1,30 @@
 ﻿using System.Runtime.Serialization.Formatters;
+using System.ComponentModel.DataAnnotations;
 
 namespace Christine_FutureValue.Models
 {
     public class FutureValueModel
     {
-        public decimal MonthlyInvestment { get; set; }
-        public decimal YearlyInterestRate { get; set; }
-        public int Years { get; set; }
+        [Required(ErrorMessage = "Please enter a monthly investment.")]
+        [Range(1,500, ErrorMessage = "Please enter a monthly investment between 1 and 500.")]
+        public decimal? MonthlyInvestment { get; set; }
+        //question mark allows MonthlyInvestment to be nullable
+        //null is the default value
 
-        public decimal CalculateFutureValue()
+        [Required (ErrorMessage ="Please enter a yearly interest rate.")]
+        [Range (0.1, 10, ErrorMessage = "Yearly rate must be between 0.1 and 10.0")]
+        public decimal? YearlyInterestRate { get; set; }
+
+        [Required (ErrorMessage ="Please enter a number of years.")]
+        [Range(1,50, ErrorMessage ="Number of years must be between 1 and 50.")]
+        public int? Years { get; set; }
+
+        public decimal? CalculateFutureValue()
         {
-            int months = Years * 12;
-            decimal monthlyInterestRate = YearlyInterestRate / 12 / 100;
-            decimal futureValue = 0;
+            int? months = Years * 12;
+
+            decimal? monthlyInterestRate = YearlyInterestRate / 12 / 100;
+            decimal? futureValue = 0;
 
             for (int i = 0; i < months; i++)
             {
