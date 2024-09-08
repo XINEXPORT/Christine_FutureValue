@@ -1,15 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Christine_FutureValue.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Christine_FutureValue.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.Name = "Christine";
-            ViewBag.FV = 1000;
-            ViewBag.Age = 35;
+            ViewBag.FV = 0;
             return View();
+        }
+        [HttpPost]
+        public IActionResult Index(FutureValueModel model)
+        {
+            ViewBag.FV = model.CalculateFutureValue();
+            return View(model);
         }
     }
 }
